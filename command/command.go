@@ -54,7 +54,8 @@ func StartMonitoring() {
 		gocron.Every(uint64(conf.RunIntervalMin)).Minute().Do(runParser)
 		<-gocron.Start()
 	} else {
-		fmt.Println("Please provide valid watcher run interval (larger than 0)")
+		// run just once
+		runParser()
 	}
 }
 
